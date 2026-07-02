@@ -20,17 +20,17 @@ import kotlin.math.*
 class BilliardDetector {
 
     // ---------- 以下阈值均为示例,必须按你要识别的具体游戏截图重新标定 ----------
-    private val TABLE_HSV_LOWER = Scalar(35.0, 60.0, 40.0)
-    private val TABLE_HSV_UPPER = Scalar(85.0, 255.0, 255.0)
+    private val TABLE_HSV_LOWER = Scalar(70.0, 70.0, 20.0)
+    private val TABLE_HSV_UPPER = Scalar(100.0, 255.0, 160.0)
 
-    private val BALL_SAT_MAX = 60.0
-    private val BALL_VAL_MIN = 170.0
-    private val BALL_MIN_RADIUS = 6
-    private val BALL_MAX_RADIUS = 60
+    private val BALL_SAT_MAX = 80.0
+    private val BALL_VAL_MIN = 180.0
+    private val BALL_MIN_RADIUS = 25
+    private val BALL_MAX_RADIUS = 90
 
-    // 游戏自带瞄准辅助线的颜色范围(很多游戏是白色/浅蓝色高亮虚线),示例给的是"高亮度、低饱和度的白色系"
-    private val GUIDE_HSV_LOWER = Scalar(0.0, 0.0, 200.0)
-    private val GUIDE_HSV_UPPER = Scalar(180.0, 60.0, 255.0)
+    // 游戏自带瞄准辅助线的颜色范围(实测:这个游戏的辅助线偏白、低饱和度、高亮度)
+    private val GUIDE_HSV_LOWER = Scalar(0.0, 0.0, 120.0)
+    private val GUIDE_HSV_UPPER = Scalar(180.0, 90.0, 255.0)
     private val GUIDE_MIN_PIXELS = 40 // 掩码里至少要有这么多像素点才认为找到了辅助线
 
     private val MAX_BOUNCES = 3
